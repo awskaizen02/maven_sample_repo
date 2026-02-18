@@ -17,6 +17,8 @@ pipeline {
 }		
 	}
 	stage('Deploy'){
+		when { expression { params.BRANCHES == 'war' } }
+		
 		steps{
 			deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'TC', path: '', url: 'http://localhost:9090/')], contextPath: 'pipeline01', war: '**/*.war'
 }		
