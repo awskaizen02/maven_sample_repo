@@ -20,6 +20,9 @@ pipeline {
 		when { expression { params.BRANCHES == 'war' } }
 		
 		steps{
+			input message: 'Deploy to Production?', ok: 'Deploy'
+			milestone(1)
+			
 			deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'TC', path: '', url: 'http://localhost:9090/')], contextPath: 'pipeline01', war: '**/*.war'
 }		
 	}
