@@ -2,7 +2,7 @@ pipeline {
     agent any
 	parameters {
 	choice(name: 'BRANCHES', choices: ['main', 'jar', 'war'], description: 'Pick Brannch to Build')}
-	triggers { cron('H */4 * * *') }
+	
 
     stages {
         stage('SCM') {
